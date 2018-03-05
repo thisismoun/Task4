@@ -1,8 +1,6 @@
 import edu.cmu.ri.createlab.terk.robot.finch.Finch;
 
 public class FinchTest {
-static double finchLen = 30;
-static int userSec = 4;
 static Finch finchRobot = new Finch();
 
 
@@ -12,7 +10,7 @@ static Finch finchRobot = new Finch();
 		return (x);
 	}
 
-	public static void forwardMovement () { //main method for movement 
+	public static void forwardMovement (int finchLen, int userSec) { //main method for movement 
 		double moveMinD = timeCalculator(finchLen);
 		int moveMin = (int)moveMinD;
 		int finchSec;
@@ -38,7 +36,7 @@ static Finch finchRobot = new Finch();
 					finchTurn = finchTurn + 1; //adds +1 to finchTurn variable. Will only happen if after every 2 sections, the check for finchSec = userSec is false. 
 		}
 	}
-	public static void retraceMovement () { //method for the retrace process. Same as movement, just reversed and with new ret variables instead of finch variables. 
+	public static void retraceMovement (int finchLen, int userSec) { //method for the retrace process. Same as movement, just reversed and with new ret variables instead of finch variables. 
 		double moveMinD = timeCalculator(finchLen);
 		int moveMin = (int)moveMinD;
 		int retSec;
@@ -66,8 +64,7 @@ static Finch finchRobot = new Finch();
 		}
 	}
 	public static void main(String[] args) {
-		forwardMovement();
-		retraceMovement();
+		
 	}
 }
 

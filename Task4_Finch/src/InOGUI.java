@@ -134,21 +134,23 @@ public class InOGUI extends JFrame {
 					else if (Integer.parseInt(sectionField.getText()) >= 2  && Integer.parseInt(sectionField.getText()) <= 10 && Integer.parseInt(sectionField.getText())%2 == 0)
 					{
 						userSec = Integer.parseInt(sectionField.getText());
+						if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80)
+						{
+							finchLen = Integer.parseInt(lengthField.getText());
+							FinchTest.forwardMovement(finchLen,userSec);
+							FinchTest.retraceMovement(finchLen,userSec);
+						}
+						else 
+						{
+							JOptionPane.showMessageDialog(null,"Oops! The given value for length is out of Bounds!" +"\nPlease try again!");
+						}
+							
 					}
 					else 
 					{
 						JOptionPane.showMessageDialog(null,"Oops! The given value for section is out of Bounds!" +"\nPlease try again!");
 					}
 					
-					if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80)
-					{
-						finchLen = Integer.parseInt(lengthField.getText());
-					}
-					else 
-					{
-						JOptionPane.showMessageDialog(null,"Oops! The given value for length is out of Bounds!" +"\nPlease try again!");
-					}
-						
 				} catch (Exception exception) {
 					JOptionPane.showMessageDialog(null, "One of the fields is blank or not a number. Please input valid parameters" + "\n See help for details");
 				}
