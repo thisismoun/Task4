@@ -1,8 +1,8 @@
 import edu.cmu.ri.createlab.terk.robot.finch.Finch;
 
 public class FinchTest {
-static double finchLen = 60;
-static int userSec = 2;
+static double finchLen = 30;
+static int userSec = 4;
 static Finch finchRobot = new Finch();
 
 
@@ -11,8 +11,7 @@ static Finch finchRobot = new Finch();
 		x = ((finchLen/14.94) * 1000);
 		return (x);
 	}
-	
-	
+
 	public static void forwardMovement () { //main method for movement 
 		double moveMinD = timeCalculator(finchLen);
 		int moveMin = (int)moveMinD;
@@ -24,7 +23,7 @@ static Finch finchRobot = new Finch();
 				finchRobot.buzz(750,moveMin);
 				finchRobot.setWheelVelocities(100,100,moveMin);
 			}
-				finchRobot.setWheelVelocities(0,100, 1592);
+				finchRobot.setWheelVelocities(0,100, 1392);
 					finchTurn = finchTurn + 1; //adds +1 to finchTurn variable
 			if (finchTurn%2 ==0) {
 				finchRobot.setLED(100,0,0);
