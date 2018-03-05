@@ -1,23 +1,16 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.BoxLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class InOGUI extends JFrame {
 
@@ -26,8 +19,8 @@ public class InOGUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField lengthField;
+	private JTextField sectionField;
 
 	/**
 	 * Launch the application.
@@ -58,7 +51,7 @@ public class InOGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblEnterLengthHere = new JLabel("Enter length here");
-		lblEnterLengthHere.setBounds(155, 99, 84, 14);
+		lblEnterLengthHere.setBounds(155, 99, 136, 14);
 		lblEnterLengthHere.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblEnterLengthHere);
 		
@@ -70,21 +63,27 @@ public class InOGUI extends JFrame {
 		label_1.setBounds(93, 135, 0, 0);
 		contentPane.add(label_1);
 		
-		textField = new JTextField();
-		textField.setBounds(155, 124, 84, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		lengthField = new JTextField();
+		lengthField.setBounds(155, 124, 84, 20);
+		contentPane.add(lengthField);
+		lengthField.setColumns(10);
 		
-		JButton button = new JButton("?");
-		button.setBounds(253, 123, 37, 23);
-		contentPane.add(button);
+		JButton lengthHelp = new JButton("?");
+		lengthHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null,"Length is measured in centimeters" + "\n It must be within the range of 30cm and 80cm");
+			}
+		});
+		lengthHelp.setBounds(253, 123, 47, 23);
+		contentPane.add(lengthHelp);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setBounds(155, 135, 0, 0);
 		contentPane.add(label_2);
 		
 		JLabel lblEnter = new JLabel("Enter number of sections here");
-		lblEnter.setBounds(155, 165, 145, 14);
+		lblEnter.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEnter.setBounds(143, 165, 180, 14);
 		contentPane.add(lblEnter);
 		
 		JLabel label_3 = new JLabel("");
@@ -95,14 +94,19 @@ public class InOGUI extends JFrame {
 		label_4.setBounds(300, 135, 0, 0);
 		contentPane.add(label_4);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(155, 184, 84, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		sectionField = new JTextField();
+		sectionField.setBounds(155, 184, 84, 20);
+		contentPane.add(sectionField);
+		sectionField.setColumns(10);
 		
-		JButton button_1 = new JButton("?");
-		button_1.setBounds(253, 183, 37, 23);
-		contentPane.add(button_1);
+		JButton sectionHelp = new JButton("?");
+		sectionHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Section must be a positive even number" + "\n It must be a minimum of 2 and maximum of 10");
+			}
+		});
+		sectionHelp.setBounds(253, 183, 47, 23);
+		contentPane.add(sectionHelp);
 		
 		JLabel label_5 = new JLabel("");
 		label_5.setBounds(362, 135, 0, 0);
@@ -116,8 +120,51 @@ public class InOGUI extends JFrame {
 		label_7.setBounds(362, 135, 0, 0);
 		contentPane.add(label_7);
 		
-		JButton btnProceed = new JButton("Proceed");
-		btnProceed.setBounds(353, 227, 71, 23);
-		contentPane.add(btnProceed);
+		JButton proceedButton = new JButton("Proceed");
+		proceedButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int userSec;
+				int finchLen;
+				try {
+					
+					if (Integer.parseInt(sectionField.getText()) < 2  || Integer.parseInt(sectionField.getText()) > 10 && Integer.parseInt(lengthField.getText()) < 30 || Integer.parseInt(lengthField.getText()) > 80)
+					{
+						JOptionPane.showMessageDialog(null,"Oops! The given value for length and sections is out of bounds!" +"\nPlease try again!");
+					}
+					else if (Integer.parseInt(sectionField.getText()) >= 2  && Integer.parseInt(sectionField.getText()) <= 10 && Integer.parseInt(sectionField.getText())%2 == 0)
+					{
+						userSec = Integer.parseInt(sectionField.getText());
+					}
+					else 
+					{
+						JOptionPane.showMessageDialog(null,"Oops! The given value for section is out of Bounds!" +"\nPlease try again!");
+					}
+					
+					if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80)
+					{
+						finchLen = Integer.parseInt(lengthField.getText());
+					}
+					else 
+					{
+						JOptionPane.showMessageDialog(null,"Oops! The given value for length is out of Bounds!" +"\nPlease try again!");
+					}
+						
+				} catch (Exception exception) {
+					JOptionPane.showMessageDialog(null, "One of the fields is blank or not a number. Please input valid parameters" + "\n See help for details");
+				}
+				
+				
+				
+			}
+		});
+		proceedButton.setBounds(334, 227, 90, 23);
+		contentPane.add(proceedButton);
+		
+		JLabel mainHeader = new JLabel("Task 4: Zig-Zag!");
+		mainHeader.setFont(new Font("Tahoma", Font.BOLD, 29));
+		mainHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		mainHeader.setBounds(10, 11, 414, 77);
+		contentPane.add(mainHeader);
 	}
 }
+ 
