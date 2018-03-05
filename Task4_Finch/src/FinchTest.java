@@ -8,7 +8,7 @@ static Finch finchRobot = new Finch();
 
 	public static double timeCalculator(double finchLen) { //this method converts the length required into milliseconds for the finch to recognize
 		double x;
-		x = ((finchLen/14) * 1000);
+		x = ((finchLen/14.94) * 1000);
 		return (x);
 	}
 	
