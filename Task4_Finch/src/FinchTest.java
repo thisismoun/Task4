@@ -20,6 +20,7 @@ static Finch finchRobot = new Finch();
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
 				finchRobot.setWheelVelocities(100,100,moveMin);
+				finchRobot.setLED(0,0,0);
 			}
 				finchRobot.setWheelVelocities(0,100, 1392);
 					finchTurn = finchTurn + 1; //adds +1 to finchTurn variable
@@ -27,6 +28,7 @@ static Finch finchRobot = new Finch();
 				finchRobot.setLED(100,0,0);
 				finchRobot.buzz(1000,moveMin);
 				finchRobot.setWheelVelocities(100,100,moveMin);
+				finchRobot.setLED(0,0,0);
 			}
 					finchSec = finchTurn +1;
 			if (finchSec >= userSec) { //checks to see if sections completed by finch = sections put forth by user. If yes, it breaks and ends the run. If not, it continues the loop.
@@ -47,6 +49,7 @@ static Finch finchRobot = new Finch();
 				finchRobot.setLED(100,0,0);
 				finchRobot.buzz(1000,moveMin);
 				finchRobot.setWheelVelocities(100,100,moveMin);
+				finchRobot.setLED(0,0,0);
 			}
 				finchRobot.setWheelVelocities(100,0, 1592);
 					retTurn = retTurn + 1;
@@ -54,6 +57,7 @@ static Finch finchRobot = new Finch();
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
 				finchRobot.setWheelVelocities(100,100,moveMin);
+				finchRobot.setLED(0,0,0);
 			}
 					retSec = retTurn +1;
 			if (retSec >= userSec) {

@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -125,6 +126,8 @@ public class InOGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int userSec;
 				int finchLen;
+				int dist;
+				double displacement;
 				try {
 					
 					if (Integer.parseInt(sectionField.getText()) < 2  || Integer.parseInt(sectionField.getText()) > 10 && Integer.parseInt(lengthField.getText()) < 30 || Integer.parseInt(lengthField.getText()) > 80)
@@ -139,6 +142,11 @@ public class InOGUI extends JFrame {
 							finchLen = Integer.parseInt(lengthField.getText());
 							FinchTest.forwardMovement(finchLen,userSec);
 							FinchTest.retraceMovement(finchLen,userSec);
+							dist = userSec * finchLen;
+							DecimalFormat dd = new DecimalFormat("#.##");  
+							displacement = ((userSec/2) * (finchLen * Math.sqrt(2)));
+							displacement = Double.valueOf(dd.format(displacement));
+							JOptionPane.showMessageDialog(null, "The finch travelled a total of " + dist +"cm" + "\nThe total displacement is " + displacement + "cm");
 						}
 						else 
 						{
