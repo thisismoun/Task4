@@ -140,8 +140,8 @@ public class InOGUI extends JFrame {
 						if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80)
 						{
 							finchLen = Integer.parseInt(lengthField.getText());
-							FinchTest.forwardMovement(finchLen,userSec);
-							FinchTest.retraceMovement(finchLen,userSec);
+							FinchMovement.forwardMovement(finchLen,userSec);
+							FinchMovement.retraceMovement(finchLen,userSec);
 							dist = userSec * finchLen;
 							DecimalFormat dd = new DecimalFormat("#.##");  
 							displacement = ((userSec/2) * (finchLen * Math.sqrt(2)));

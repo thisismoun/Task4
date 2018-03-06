@@ -1,6 +1,6 @@
 import edu.cmu.ri.createlab.terk.robot.finch.Finch;
 
-public class FinchTest {
+public class FinchMovement {
 static Finch finchRobot = new Finch();
 
 
@@ -66,9 +66,6 @@ static Finch finchRobot = new Finch();
 				finchRobot.setWheelVelocities(0,100, 1592);
 					retTurn = retTurn + 1;
 		}
-	}
-	public static void main(String[] args) {
-		
 	}
 }
 
