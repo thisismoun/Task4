@@ -6,7 +6,7 @@ static Finch finchRobot = new Finch();
 
 	public static double timeCalculator(double finchLen) { //this method converts the length required into milliseconds for the finch to recognize
 		double x;
-		x = ((finchLen/14.94) * 1000);
+		x = ((finchLen/14.732) * 1000);
 		return (x);
 	}
 
@@ -19,7 +19,7 @@ static Finch finchRobot = new Finch();
 			if (finchTurn%2 != 0) {
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
-				finchRobot.setWheelVelocities(100,101,moveMin); 
+				finchRobot.setWheelVelocities(100,102,moveMin); 
 				finchRobot.setLED(0,0,0);
 			}
 				finchRobot.setWheelVelocities(0,100, 1550); //turn left
@@ -27,7 +27,7 @@ static Finch finchRobot = new Finch();
 			if (finchTurn%2 ==0) {
 				finchRobot.setLED(100,0,0);
 				finchRobot.buzz(1500,moveMin);
-				finchRobot.setWheelVelocities(100,101,moveMin);
+				finchRobot.setWheelVelocities(100,102,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
 					finchSec = finchTurn +1;
@@ -43,12 +43,12 @@ static Finch finchRobot = new Finch();
 		int moveMin = (int)moveMinD;
 		int retSec;
 		int retTurn = 1;
-				finchRobot.setWheelVelocities(0,100, 2990); //180 turn
+				finchRobot.setWheelVelocities(-100,100, 1495); //180 turn
 		for(int i=0; i < 10; i++){
 			if (retTurn%2 != 0) {
 				finchRobot.setLED(100,0,0);
-				finchRobot.buzz(1000,moveMin);
-				finchRobot.setWheelVelocities(100,101,moveMin);
+				finchRobot.buzz(1500,moveMin);
+				finchRobot.setWheelVelocities(100,102,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
 				finchRobot.setWheelVelocities(100,0, 1550);
@@ -56,7 +56,7 @@ static Finch finchRobot = new Finch();
 			if (retTurn%2 ==0) {
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
-				finchRobot.setWheelVelocities(100,101,moveMin);
+				finchRobot.setWheelVelocities(100,102,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
 					retSec = retTurn +1;
@@ -66,6 +66,11 @@ static Finch finchRobot = new Finch();
 				finchRobot.setWheelVelocities(0,100, 1500);
 					retTurn = retTurn + 1;
 		}
+	}
+	public static void zig_Zag(int finchLen,int userSec) {
+		FinchMovement.forwardMovement(finchLen, userSec);
+		FinchMovement.retraceMovement(finchLen, userSec);
+		
 	}
 }
 
