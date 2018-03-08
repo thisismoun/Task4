@@ -4,9 +4,9 @@ public class FinchMovement {
 static Finch finchRobot = new Finch();
 
 
-	public static double timeCalculator(double finchLen) { //this method converts the length required into milliseconds for the finch to recognize
+	public static double timeCalculator(int finchLen) { //this method converts the length required into milliseconds for the finch to recognize
 		double x;
-		x = ((finchLen/14.732) * 1000);
+		x = ((finchLen/13.3) * 1000);
 		return (x);
 	}
 
@@ -43,7 +43,7 @@ static Finch finchRobot = new Finch();
 		int moveMin = (int)moveMinD;
 		int retSec;
 		int retTurn = 1;
-				finchRobot.setWheelVelocities(-100,100, 1495); //180 turn
+				finchRobot.setWheelVelocities(-100,100, 1600); //180 turn
 		for(int i=0; i < 10; i++){
 			if (retTurn%2 != 0) {
 				finchRobot.setLED(100,0,0);

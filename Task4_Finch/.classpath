@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="E:/Brunel Work/CS 1701 Group project/Finch zig zag/FinchEclipse/lib/finch.jar"/>
+	<classpathentry kind="lib" path="D:/Brunel Work/1701 Group Project/Finch Documents/lib/finch.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

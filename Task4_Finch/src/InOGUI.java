@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Color;
 
 public class InOGUI extends JFrame {
 
@@ -43,16 +44,19 @@ public class InOGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public InOGUI() {
+		setBackground(Color.WHITE);
 		setTitle("Zig-zag");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 555, 394);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblEnterLengthHere = new JLabel("Enter length here");
-		lblEnterLengthHere.setBounds(155, 99, 136, 14);
+		lblEnterLengthHere.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEnterLengthHere.setBounds(197, 120, 180, 34);
 		lblEnterLengthHere.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblEnterLengthHere);
 		
@@ -65,17 +69,19 @@ public class InOGUI extends JFrame {
 		contentPane.add(label_1);
 		
 		lengthField = new JTextField();
-		lengthField.setBounds(155, 124, 84, 20);
+		lengthField.setBackground(Color.WHITE);
+		lengthField.setBounds(197, 151, 123, 36);
 		contentPane.add(lengthField);
 		lengthField.setColumns(10);
 		
 		JButton lengthHelp = new JButton("?");
+		lengthHelp.setBackground(Color.WHITE);
 		lengthHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null,"Length is measured in centimeters" + "\n It must be within the range of 30cm and 80cm");
 			}
 		});
-		lengthHelp.setBounds(253, 123, 47, 23);
+		lengthHelp.setBounds(330, 150, 47, 36);
 		contentPane.add(lengthHelp);
 		
 		JLabel label_2 = new JLabel("");
@@ -83,8 +89,9 @@ public class InOGUI extends JFrame {
 		contentPane.add(label_2);
 		
 		JLabel lblEnter = new JLabel("Enter number of sections here");
+		lblEnter.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEnter.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEnter.setBounds(143, 165, 180, 14);
+		lblEnter.setBounds(197, 208, 214, 40);
 		contentPane.add(lblEnter);
 		
 		JLabel label_3 = new JLabel("");
@@ -96,17 +103,19 @@ public class InOGUI extends JFrame {
 		contentPane.add(label_4);
 		
 		sectionField = new JTextField();
-		sectionField.setBounds(155, 184, 84, 20);
+		sectionField.setBackground(Color.WHITE);
+		sectionField.setBounds(197, 248, 123, 36);
 		contentPane.add(sectionField);
 		sectionField.setColumns(10);
 		
 		JButton sectionHelp = new JButton("?");
+		sectionHelp.setForeground(Color.BLACK);
 		sectionHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,"Section must be a positive even number" + "\n It must be a minimum of 2 and maximum of 10");
 			}
 		});
-		sectionHelp.setBounds(253, 183, 47, 23);
+		sectionHelp.setBounds(330, 248, 47, 36);
 		contentPane.add(sectionHelp);
 		
 		JLabel label_5 = new JLabel("");
@@ -142,9 +151,7 @@ public class InOGUI extends JFrame {
 							finchLen = Integer.parseInt(lengthField.getText());
 							FinchMovement.zig_Zag(finchLen, userSec);
 							dist = userSec * finchLen;
-							DecimalFormat dd = new DecimalFormat("#.##");  
-							displacement = ((userSec/2) * (finchLen * Math.sqrt(2)));
-							displacement = Double.valueOf(dd.format(displacement));
+							displacement = displaceCalc(finchLen,userSec);
 							JOptionPane.showMessageDialog(null, "The finch travelled a total of " + dist +"cm" + "\nThe total displacement is " + displacement + "cm");
 						}
 						else 
@@ -166,14 +173,22 @@ public class InOGUI extends JFrame {
 				
 			}
 		});
-		proceedButton.setBounds(334, 227, 90, 23);
+		proceedButton.setBounds(417, 296, 112, 48);
 		contentPane.add(proceedButton);
 		
 		JLabel mainHeader = new JLabel("Task 4: Zig-Zag!");
 		mainHeader.setFont(new Font("Tahoma", Font.BOLD, 29));
 		mainHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		mainHeader.setBounds(10, 11, 414, 77);
+		mainHeader.setBounds(5, 17, 528, 77);
 		contentPane.add(mainHeader);
+	}
+	public static double displaceCalc(int finchLen,int userSec) {
+		double x;
+		DecimalFormat dd = new DecimalFormat("#.##");  
+		x = ((userSec/2) * (finchLen * Math.sqrt(2)));
+		x = Double.valueOf(dd.format(x));
+		return (x);
+		
 	}
 }
  
