@@ -13,6 +13,8 @@ import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class InOGUI extends JFrame {
 
@@ -40,7 +42,7 @@ public class InOGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 555, 394);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -66,7 +68,7 @@ public class InOGUI extends JFrame {
 		lengthField.setColumns(10);
 		
 		JButton lengthHelp = new JButton("?");
-		lengthHelp.setBackground(Color.WHITE);
+		lengthHelp.setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		lengthHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null,"Length is measured in centimeters" + "\n It must be within the range of 30cm and 80cm");
@@ -100,6 +102,7 @@ public class InOGUI extends JFrame {
 		sectionField.setColumns(10);
 		
 		JButton sectionHelp = new JButton("?");
+		sectionHelp.setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		sectionHelp.setForeground(Color.BLACK);
 		sectionHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +147,7 @@ public class InOGUI extends JFrame {
 							//Then, distance and displacement is calculated and displayed once the finch is done moving
 						{
 							finchLen = Integer.parseInt(lengthField.getText());
-							FinchMovement.zig_Zag(finchLen, userSec);
+							//FinchMovement.zig_Zag(finchLen, userSec);
 							//One line of code, so no need to create another method to calculate the total distance
 							dist = userSec * finchLen;
 							displacement = displaceCalc(finchLen,userSec);
