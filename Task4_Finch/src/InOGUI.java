@@ -180,7 +180,7 @@ public class InOGUI extends JFrame {
 		mainHeader.setBounds(5, 17, 528, 77);
 		contentPane.add(mainHeader);
 	}
-	//method used to calculate displacement. Used as code is a bit lengthy to put into the Action Event
+	//method used to calculate displacement. Code is a bit lengthy to put into the Action Event
 	public static double displaceCalc(int finchLen,int userSec) {
 		double x;
 		DecimalFormat dd = new DecimalFormat("#.##");  

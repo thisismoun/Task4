@@ -74,11 +74,11 @@ static Finch finchRobot = new Finch();
 			if (retSec >= userSec) {
 				break;
 			}
-				finchRobot.setWheelVelocities(0,100, 1500);
+				finchRobot.setWheelVelocities(0,100, 1400);
 					retTurn = retTurn + 1;
 		}
 	}
-	//constructor that calls both of the previous methods. With movement first and then retrace.
+	//Method that calls both of the previous methods. With movement first and then retrace.
 	public static void zig_Zag(int finchLen,int userSec) {
 		FinchMovement.forwardMovement(finchLen, userSec);
 		FinchMovement.retraceMovement(finchLen, userSec);
