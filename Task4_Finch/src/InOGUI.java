@@ -16,17 +16,11 @@ import java.awt.Color;
 
 public class InOGUI extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField lengthField;
 	private JTextField sectionField;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,9 +34,6 @@ public class InOGUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public InOGUI() {
 		setBackground(Color.WHITE);
 		setTitle("Zig-zag");
@@ -138,18 +129,23 @@ public class InOGUI extends JFrame {
 				int dist;
 				double displacement;
 				try {
-					
+					//check for if both fields are simultaneously out of bounds
 					if ((Integer.parseInt(sectionField.getText()) < 2  || Integer.parseInt(sectionField.getText()) > 10) && (Integer.parseInt(lengthField.getText()) < 30 || Integer.parseInt(lengthField.getText()) > 80))
 					{
 						JOptionPane.showMessageDialog(null,"Oops! The given value for 'length' and 'sections' is out of bounds!" +"\nPlease try again!");
 					}
+					//otherwise, checks if section is in bounds
 					else if (Integer.parseInt(sectionField.getText()) >= 2  && Integer.parseInt(sectionField.getText()) <= 10 && Integer.parseInt(sectionField.getText())%2 == 0)
 					{
+						//if yes, then assigns userSec as the value and then checks if the length field is in the bounds
 						userSec = Integer.parseInt(sectionField.getText());
-						if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80)
+						if (Integer.parseInt(lengthField.getText()) >= 30 && Integer.parseInt(lengthField.getText()) <= 80) 
+							// if yes, all checks are complete. finchLen is assigned the value and the zig zag constructor from the movement class is called with with values of finchLen and userSec.
+							//Then, distance and displacement is calculated and displayed once the finch is done moving
 						{
 							finchLen = Integer.parseInt(lengthField.getText());
 							FinchMovement.zig_Zag(finchLen, userSec);
+							//One line of code, so no need to create another method to calculate the total distance
 							dist = userSec * finchLen;
 							displacement = displaceCalc(finchLen,userSec);
 							JOptionPane.showMessageDialog(null, "The finch travelled a total of " + dist +"cm" + "\nThe total displacement is " + displacement + "cm");
@@ -182,6 +178,7 @@ public class InOGUI extends JFrame {
 		mainHeader.setBounds(5, 17, 528, 77);
 		contentPane.add(mainHeader);
 	}
+	//method used to calculate displacement. Used as code is a bit lengthy to put into the Action Event
 	public static double displaceCalc(int finchLen,int userSec) {
 		double x;
 		DecimalFormat dd = new DecimalFormat("#.##");  
