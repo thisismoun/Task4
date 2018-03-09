@@ -147,7 +147,7 @@ public class InOGUI extends JFrame {
 							//Then, distance and displacement is calculated and displayed once the finch is done moving
 						{
 							finchLen = Integer.parseInt(lengthField.getText());
-							//FinchMovement.zig_Zag(finchLen, userSec);
+							FinchMovement.zig_Zag(finchLen, userSec);
 							//One line of code, so no need to create another method to calculate the total distance
 							dist = userSec * finchLen;
 							displacement = displaceCalc(finchLen,userSec);

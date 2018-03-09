@@ -19,21 +19,21 @@ static Finch finchRobot = new Finch();
 		 //loops the movement for number of userSections. 
 		for(int i=0; i < userSec; i++){
 			//if statements to divide each section. Odd numbers as one section, even as the others. 
-			//Speed of specifically 102 for right wheel is used to make sure finch travels straight as at 100, it turns ever so slightly to the right. It is intentional. 
+			//Speed of specifically 101 for right wheel is used to make sure finch travels straight as at 100, it turns ever so slightly to the right. It is intentional. 
 			if (finchTurn%2 != 0) {
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
-				finchRobot.setWheelVelocities(100,102,moveMin); 
+				finchRobot.setWheelVelocities(100,101,moveMin); 
 				finchRobot.setLED(0,0,0);
 			}
 				//turn left
-				finchRobot.setWheelVelocities(0,100, 1550); 
+				finchRobot.setWheelVelocities(0,100, 1400); 
 					//adds +1 to finchTurn variable
 					finchTurn = finchTurn + 1;
 			if (finchTurn%2 ==0) {
 				finchRobot.setLED(100,0,0);
 				finchRobot.buzz(1500,moveMin);
-				finchRobot.setWheelVelocities(100,102,moveMin);
+				finchRobot.setWheelVelocities(100,101,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
 					//calculates finchSec as number of turns + 1 
@@ -43,7 +43,7 @@ static Finch finchRobot = new Finch();
 				break;
 			}
 				//turn right
-				finchRobot.setWheelVelocities(100,0, 1500); 
+				finchRobot.setWheelVelocities(100,0, 1300); 
 					//adds +1 to finchTurn variable if the loop does not break. 
 					finchTurn = finchTurn + 1; 
 		}
@@ -54,20 +54,20 @@ static Finch finchRobot = new Finch();
 		int moveMin = (int)moveMinD;
 		int retSec;
 		int retTurn = 1;
-				finchRobot.setWheelVelocities(-100,100, 1600); //180 turn
+				finchRobot.setWheelVelocities(-100,100, 1500); //180 turn
 		for(int i=0; i < userSec; i++){
 			if (retTurn%2 != 0) {
 				finchRobot.setLED(100,0,0);
 				finchRobot.buzz(1500,moveMin);
-				finchRobot.setWheelVelocities(100,102,moveMin);
+				finchRobot.setWheelVelocities(100,101,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
-				finchRobot.setWheelVelocities(100,0, 1550);
+				finchRobot.setWheelVelocities(100,0, 1300);
 					retTurn = retTurn + 1;
 			if (retTurn%2 ==0) {
 				finchRobot.setLED(0,100,0);
 				finchRobot.buzz(750,moveMin);
-				finchRobot.setWheelVelocities(100,102,moveMin);
+				finchRobot.setWheelVelocities(100,101,moveMin);
 				finchRobot.setLED(0,0,0);
 			}
 					retSec = retTurn +1;
